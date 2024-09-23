@@ -1,5 +1,4 @@
 ﻿using Novell.Directory.Ldap;
-using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -178,19 +177,19 @@ public class LDAPControl
 		var random = new Random();
 		var password = new StringBuilder();
 
-		// En az bir büyük harf, bir küçük harf ve bir rakam ekliyoruz
+		
 		password.Append(upperChars[random.Next(upperChars.Length)]);
 		password.Append(lowerChars[random.Next(lowerChars.Length)]);
 		password.Append(numbers[random.Next(numbers.Length)]);
 
-		// Geri kalan karakterleri rastgele seçiyoruz
+		
 		for (int i = 3; i < 8; i++)
 		{
 			password.Append(allChars[random.Next(allChars.Length)]);
 		}
 		newLDAPpassword = password.ToString().ToCharArray().OrderBy(x => random.Next()).ToArray().ToString();
 		newLDAPpassword = "{MD5}" + Convert.ToBase64String(ldapConf.ConvertHexStringToByteArray(ldapConf.MD5Sifrele(newLDAPpassword)));
-		// Karakterlerin sırasını karıştırıyoruz
+		
 		return newLDAPpassword;
 	}
 	public List<LdapUserClass> ListAllAccounts()
