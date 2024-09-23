@@ -35,7 +35,7 @@ public class LDAPControl
 
 				attrs.Add(new LdapAttribute("objectClass", new string[] { "inetOrgPerson", "organizationalPerson", "person", "top" }));
 				attrs.Add(new LdapAttribute("cn", user.cn));
-				attrs.Add(new LdapAttribute("uid", user.oid));
+				attrs.Add(new LdapAttribute("uid", user.uid));
 				attrs.Add(new LdapAttribute("givenName", user.givenName));
 				attrs.Add(new LdapAttribute("sn", user.sn));
 				attrs.Add(new LdapAttribute("userPassword", user.userPassword));
@@ -332,7 +332,7 @@ public class LDAPControl
 	{
 		public string username { get; set; }
 		public string cn { get; set; }
-		public string oid { get; set; }
+		public string uid { get; set; }
 		public string givenName { get; set; }
 		public string sn { get; set; }
 		public string mail { get; set; }
